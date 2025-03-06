@@ -34,30 +34,10 @@ function sortearAmigo() {
         return;
     }
 
-    let amigosSorteo = [...amigos];
-    let resultado = [];
-
-    while (amigosSorteo.length > 1) {
-        let indiceA = Math.floor(Math.random() * amigosSorteo.length);
-        let amigoA = amigosSorteo.splice(indiceA, 1)[0];
-        let indiceB = Math.floor(Math.random() * amigosSorteo.length);
-        let amigoB = amigosSorteo.splice(indiceB, 1)[0];
-        resultado.push(`${amigoA} → ${amigoB}`);
-    }
-
-    if (amigosSorteo.length === 1) {
-        resultado.push(`${amigosSorteo[0]} → ${amigos[0]}`);
-    }
-
-    mostrarResultado(resultado);
+    let indice = Math.floor(Math.random() * amigos.length);
+    let amigoSecreto = amigos[indice];
+    
+    const resultado = document.getElementById("resultado");
+    resultado.innerHTML = `<li>Tu amigo secreto es ${amigoSecreto}</li>`;
 }
 
-function mostrarResultado(parejas) {
-    const lista = document.getElementById("resultado");
-    lista.innerHTML = "";
-    parejas.forEach((pareja) => {
-        const li = document.createElement("li");
-        li.textContent = pareja;
-        lista.appendChild(li);
-    });
-}
